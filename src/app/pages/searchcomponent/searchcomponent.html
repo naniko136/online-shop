@@ -1,0 +1,30 @@
+
+<div class="filters">
+  <input type="text" placeholder="Search..." (input)="Search$.next($any($event.target).value)" />
+
+  <select (change)="Brand$.next($any($event.target).value)">
+    <option value="">All brands</option>
+    <option value="Essence">Essence</option>
+    <option value="Glamour Beauty">Glamour Beauty</option>
+    <option value="Velvet Touch">Velvet Touch</option>
+    <option value="Chic Cosmetics">Chic Cosmetics</option>
+    <option value="Nail Couture">Nail Couture</option>
+    <option value="Calvin Klein">Calvin Klein</option>
+    <option value="Chanel">Chanel</option>
+    <option value="Dior">Dior</option>
+    <option value="Dolce & Gabbana">Dolce & Gabbana</option>
+    <option value="Gucci">Gucci</option>
+    <option value="Annibale Colombo">Annibale Colombo</option>
+    <option value="Furniture Co.">Furniture Co.</option>
+    <option value="Knoll">Knoll</option>
+    <option value="Bath Trends">Bath Trends</option>
+  </select>
+
+  <select (change)="Category$.next($any($event.target).value)">
+    <option value="">All Categories</option>
+    <option value="beauty">beauty</option>
+    <option value="fragrances">fragrances</option>
+    <option value="furniture">furniture</option>
+    <option value="groceries">groceries</option>
+  </select>
+</div>

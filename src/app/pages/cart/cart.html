@@ -1,0 +1,36 @@
+<div class="container">
+  @if (mainService.loading()) {
+    <div class="loader-wrapper">
+      <div class="spinner"></div>
+      <p>Loading...</p>
+    </div>
+  } @else {
+    <div class="products" *ngFor="let item of cart$ | async">
+      <div class="product-card">
+        <img [src]="item.thumbnail" [alt]="item" />
+
+        <h3>{{ item.title }}</h3>
+        <p class="description">
+          {{ item.description }}
+        </p>
+
+        <div class="bottom">
+          <span class="price">${{ item.price }}</span>
+          <div class="btnQtydiv">
+            <p>
+              <button (click)="decrease(item.id)">-</button>
+              {{ item.quantity }}
+              <button (click)="increase(item.id)">+</button>
+            </p>
+          </div>
+          <p class="price">sum: {{ item.price * item.quantity }}</p>
+          <button (click)="apiService.removeFromCart(item.id)">remove cart</button>
+        </div>
+      </div>
+    </div>
+  }
+  <!-- <button (click)="apiService.clearCart()">Clear Cart</button> -->
+</div>
+<p>aaa</p>
+
+<!-- test -->

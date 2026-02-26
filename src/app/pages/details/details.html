@@ -1,0 +1,33 @@
+<div *ngIf="product$ | async as product" class="details-wrapper">
+  <div class="image-section">
+    <div class="main-image">
+      <img [src]="selectedImage || product.images[0]" alt="{{ product.title }}" />
+    </div>
+    <div class="thumbnails">
+      <img
+        *ngFor="let img of product.images"
+        [src]="img"
+        (click)="selectedImage = img"
+        [class.active]="selectedImage === img"
+      />
+    </div>
+  </div>
+  <div class="info-section">
+    <h2 class="title">{{ product.title }}</h2>
+    <p class="brand">
+      Brand: <span>{{ product.brand }}</span>
+    </p>
+    <p class="category">
+      Category: <span>{{ product.category }}</span>
+    </p>
+    <p class="description">
+      {{ product.description }}
+    </p>
+    <h3 class="price">${{ product.price }}</h3>
+
+    <div class="buttons">
+      <button class="cart-btn" (click)="add(product)">Add to Cart</button>
+      <button routerLink="/" class="back-btn">Go Back</button>
+    </div>
+  </div>
+</div>

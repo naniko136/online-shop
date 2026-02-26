@@ -1,0 +1,31 @@
+import { Component, inject } from '@angular/core';
+import { ActivatedRoute, RouterLink } from '@angular/router';
+import { MainService } from '../../services/main-service';
+import { switchMap } from 'rxjs';
+import { CommonModule } from '@angular/common';
+import { Cartservice } from '../../services/cartservice';
+
+@Component({
+  selector: 'app-details',
+  imports: [CommonModule, RouterLink],
+  templateUrl: './details.html',
+  styleUrl: './details.scss',
+})
+export class Details {
+  private route = inject(ActivatedRoute);
+  private api = inject(MainService);
+  private cartService = inject(Cartservice);
+
+  selectedImage: string | null = null;
+
+  add(product: any) {
+    this.cartService.addToCart(product);
+  }
+
+  product$ = this.route.paramMap.pipe(
+    switchMap((params) => {
+      const id = params.get('id');
+      return this.api.getSingleProduct(id!);
+    }),
+  );
+}

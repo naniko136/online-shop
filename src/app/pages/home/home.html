@@ -1,0 +1,29 @@
+<app-searchcomponent></app-searchcomponent>
+
+<div class="container">
+  @if (apiService.loading()) {
+    <div class="loader-wrapper">
+      <div class="spinner"></div>
+      <p>Loading...</p>
+    </div>
+  } @else {
+    <div class="products">
+      @for (product of apiService.allProducts(); track product.id) {
+        <div class="product-card">
+          <img [src]="product.thumbnail" [alt]="product.title" />
+
+          <h3>{{ product.title }}</h3>
+          <p class="description">
+            {{ product.description }}
+          </p>
+
+          <div class="bottom">
+            <span class="price">${{ product.price }}</span>
+            <button (click)="add(product)">Add to Cart</button>
+            <button [routerLink]="['/products', product.id]">Details</button>
+          </div>
+        </div>
+      }
+    </div>
+  }
+</div>

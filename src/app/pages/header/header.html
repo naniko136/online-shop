@@ -1,0 +1,34 @@
+<div class="container">
+  <div class="logo" routerLink="/"></div>
+
+  <nav>
+    <ul class="nav-menu">
+      <li>
+        <a
+          class="nav-item"
+          routerLink="/"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: true }"
+          >Home</a
+        >
+      </li>
+      <li>
+        <a class="nav-item" routerLink="cart" routerLinkActive="active">Cart</a>
+      </li>
+      @if (authservice.isLoggedIn$ | async) {
+        <li>
+          <a class="nav-item" (click)="authservice.logOut()">Log Out</a>
+        </li>
+      } @else {
+        <div class="auth">
+          <li>
+            <a class="nav-item" routerLink="log-in" routerLinkActive="active">Log In</a>
+          </li>
+          <li>
+            <a class="nav-item" routerLink="register" routerLinkActive="active">Register</a>
+          </li>
+        </div>
+      }
+    </ul>
+  </nav>
+</div>

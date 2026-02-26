@@ -1,0 +1,48 @@
+<div class="container">
+  <h2>LogIn</h2>
+
+  <form [formGroup]="logInForm" (ngSubmit)="onSubmit()">
+    <div>
+      <label class="form-label">email</label>
+      <input type="email" formControlName="email" class="form-input" />
+
+      @if (logInForm.get('email')?.invalid && logInForm.get('email')?.touched) {
+        <div class="alert alert-danger">
+          @if (logInForm.get('email')?.errors?.['required']) {
+            <p>email is required</p>
+          }
+          @if (logInForm.get('email')?.errors?.['email']) {
+            <p>invalid email</p>
+          }
+        </div>
+      }
+    </div>
+
+    <div>
+      <label class="form-label">password</label>
+      <input type="password" formControlName="password" class="form-input" />
+
+      @if (logInForm.get('password')?.invalid && logInForm.get('password')?.touched) {
+        <div class="alert alert-danger">
+          @if (logInForm.get('password')?.errors?.['required']) {
+            <p>password is required</p>
+          }
+          @if (logInForm.get('password')?.errors?.['minlength']) {
+            <p>password must be 8 char length</p>
+          }
+        </div>
+      }
+    </div>
+
+    <!-- @if (errorMessage()) {
+      <div>{{ errorMessage() }}</div>
+    } -->
+
+    <div>
+      <button type="submit" class="btn loginbtn" [disabled]="logInForm.invalid"> Log In</button>
+    </div>
+    <div>
+      <a routerLink="/register">Register</a>
+    </div>
+  </form>
+</div>
