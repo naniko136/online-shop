@@ -10,7 +10,7 @@ import {
   switchMap,
 } from 'rxjs';
 import { Searchcomponent } from '../searchcomponent/searchcomponent';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { Cartservice } from '../../services/cartservice';
 import { AuthService } from '../../services/auth-service';
 
@@ -23,8 +23,19 @@ import { AuthService } from '../../services/auth-service';
 export class Home {
   public apiService = inject(MainService);
   private cartService = inject(Cartservice);
+  public authservice = inject(AuthService);
+
+  private router = inject(Router);
 
   add(product: any) {
+    const isLoggedIn = localStorage.getItem('token');
+
+    if (!isLoggedIn) {
+      this.router.navigate(['/log-in']);
+      alert('log in please');
+      return;
+    }
+
     this.cartService.addToCart(product);
   }
 

@@ -3,11 +3,13 @@ import { inject, Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { BehaviorSubject, catchError, tap, throwError } from 'rxjs';
 import { ILoginRequest, IRegisterRequest } from '../models/auth';
+import { Cartservice } from './cartservice';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
+  private Cartservice = inject(Cartservice);
   private http = inject(HttpClient);
   private router = inject(Router);
   private apiUrl = 'https://api.everrest.educata.dev/auth';
@@ -43,6 +45,8 @@ export class AuthService {
   logOut() {
     localStorage.removeItem('token');
     localStorage.removeItem('userId');
+    this.Cartservice.clearCart();
+
     this.isLoggedInSubject.next(false);
     this.router.navigate(['/log-in']);
   }
