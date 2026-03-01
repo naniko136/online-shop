@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { ActivatedRoute, RouterLink } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { MainService } from '../../services/main-service';
 import { switchMap } from 'rxjs';
 import { CommonModule } from '@angular/common';
@@ -16,10 +16,19 @@ export class Details {
   private route = inject(ActivatedRoute);
   public api = inject(MainService);
   private cartService = inject(Cartservice);
+  private router = inject(Router);
 
   selectedImage: string | null = null;
 
   add(product: IProductsinterface) {
+    const isLoggedIn = localStorage.getItem('token');
+
+    if (!isLoggedIn) {
+      this.router.navigate(['/log-in']);
+      alert('log in please');
+      return;
+    }
+
     this.cartService.addToCart(product);
   }
 
