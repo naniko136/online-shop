@@ -53,3 +53,7 @@ export interface IProductsinterface {
   thumbnail: '...';
   images: ['...', '...', '...'];
 }
+
+export interface Icart extends IProductsinterface {
+  quantity: number;
+}

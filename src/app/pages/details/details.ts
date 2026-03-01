@@ -4,6 +4,7 @@ import { MainService } from '../../services/main-service';
 import { switchMap } from 'rxjs';
 import { CommonModule } from '@angular/common';
 import { Cartservice } from '../../services/cartservice';
+import { IProductsinterface } from '../../models/productsinterface';
 
 @Component({
   selector: 'app-details',
@@ -18,7 +19,7 @@ export class Details {
 
   selectedImage: string | null = null;
 
-  add(product: any) {
+  add(product: IProductsinterface) {
     this.cartService.addToCart(product);
   }
 

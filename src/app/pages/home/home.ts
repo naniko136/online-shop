@@ -1,18 +1,11 @@
 import { Component, inject } from '@angular/core';
 import { MainService } from '../../services/main-service';
 import { CommonModule } from '@angular/common';
-import {
-  combineLatest,
-  debounceTime,
-  distinctUntilChanged,
-  startWith,
-  Subject,
-  switchMap,
-} from 'rxjs';
 import { Searchcomponent } from '../searchcomponent/searchcomponent';
 import { Router, RouterLink } from '@angular/router';
 import { Cartservice } from '../../services/cartservice';
 import { AuthService } from '../../services/auth-service';
+import { IProductsinterface } from '../../models/productsinterface';
 
 @Component({
   selector: 'app-home',
@@ -27,7 +20,7 @@ export class Home {
 
   private router = inject(Router);
 
-  add(product: any) {
+  add(product: IProductsinterface) {
     const isLoggedIn = localStorage.getItem('token');
 
     if (!isLoggedIn) {
@@ -39,25 +32,7 @@ export class Home {
     this.cartService.addToCart(product);
   }
 
-  // Search$ = new Subject<string>();
-  // Brand$ = new Subject<string>();
-  // Category$ = new Subject<string>();
-
   ngOnInit() {
-    // combineLatest([
-    //   this.Search$.pipe(startWith(''), debounceTime(400), distinctUntilChanged()),
-    //   this.Brand$.pipe(startWith('')),
-    //   this.Category$.pipe(startWith('')),
-    // ])
-    //   .pipe(
-    //     switchMap(([search, brand, category]) =>
-    //       this.apiService.getFilteredProducts(search, brand, category),
-    //     ),
-    //   )
-    //   .subscribe((res) => {
-    //     this.apiService.allProducts.set(res.products);
-    //   });
-
     this.apiService.loadAllProducts();
   }
 }

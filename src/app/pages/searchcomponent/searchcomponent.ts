@@ -1,10 +1,8 @@
 import { Component, inject } from '@angular/core';
 import {
-  BehaviorSubject,
   combineLatest,
   debounceTime,
   distinctUntilChanged,
-  Observable,
   startWith,
   Subject,
   switchMap,
