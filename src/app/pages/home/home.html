@@ -12,15 +12,15 @@
         <div class="product-card">
           <img [src]="product.thumbnail" [alt]="product.title" />
 
-          <h3>{{ product.title }}</h3>
+          <h3>{{ product.title | titlecase }}</h3>
           <p class="description">
             {{ product.description }}
           </p>
 
           <div class="bottom">
             <span class="price">${{ product.price }}</span>
-            <button (click)="add(product)">Add to Cart</button>
-            <button [routerLink]="['/products', product.id]">Details</button>
+            <button class="btn addbtn" (click)="add(product)">Add to Cart</button>
+            <button class="btn detailsbtn" [routerLink]="['/products', product.id]">Details</button>
           </div>
         </div>
       }

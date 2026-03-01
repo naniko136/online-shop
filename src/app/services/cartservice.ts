@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, map } from 'rxjs';
 import { Icartinterface } from '../models/icartinterface';
 
 @Injectable({
@@ -9,6 +9,10 @@ export class Cartservice {
   private cartSubject = new BehaviorSubject<any[]>([]);
 
   cart$ = this.cartSubject.asObservable();
+
+  totalCount$ = this.cart$.pipe(
+    map((items) => items.reduce((sum, item) => sum + item.quantity, 0)),
+  );
 
   addToCart(product: any) {
     const currentCart = this.cartSubject.value;

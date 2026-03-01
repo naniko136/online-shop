@@ -13,7 +13,7 @@ import { Cartservice } from '../../services/cartservice';
 })
 export class Details {
   private route = inject(ActivatedRoute);
-  private api = inject(MainService);
+  public api = inject(MainService);
   private cartService = inject(Cartservice);
 
   selectedImage: string | null = null;

@@ -13,7 +13,12 @@
         >
       </li>
       <li>
-        <a class="nav-item" routerLink="cart" routerLinkActive="active">Cart</a>
+        <a class="nav-item  cart-icon" routerLink="cart" routerLinkActive="active"
+          >🛒
+          @if (totalCount$ | async; as count) {
+            <span class="badge">{{ count }}</span>
+          }
+        </a>
       </li>
       @if (authservice.isLoggedIn$ | async) {
         <li>

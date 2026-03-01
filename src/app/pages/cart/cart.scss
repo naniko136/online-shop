@@ -3,7 +3,9 @@
   padding: 0;
   box-sizing: border-box;
 }
+
 .container {
+  margin: 40px auto;
   max-width: 1200px;
   margin: 40px auto;
   padding: 0 20px;
@@ -12,89 +14,104 @@
   justify-content: center;
   gap: 30px;
   margin-top: 150px;
-}
 
-.product-card {
-  width: 280px;
-  background: #ffffff;
-  border-radius: 18px;
-  overflow: hidden;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.06);
-  transition: all 0.3s ease;
-  display: flex;
-  flex-direction: column;
-
-  &:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
-  }
-
-  img {
-    width: 100%;
-    height: 220px;
-    object-fit: cover;
-    transition: 0.4s ease;
-  }
-
-  &:hover img {
-    transform: scale(1.05);
-  }
-
-  h3 {
-    font-size: 18px;
-    margin: 15px;
-    font-weight: 600;
-  }
-
-  .description {
-    font-size: 14px;
-    color: #666;
-    margin: 0 15px 15px 15px;
-    flex-grow: 1;
-  }
-
-  .bottom {
-    padding: 15px;
+  .products {
     display: flex;
-    flex-direction: column;
-    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    flex-wrap: wrap;
 
-    .price {
-      font-size: 16px;
-      font-weight: 600;
-      color: #7c3aed;
-      margin: 0 auto;
-    }
+    .product-card {
+      max-width: 280px;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      background-color: #fff;
+      border-radius: 18px;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.06);
+      padding: 10px 0;
 
-    .btnQtydiv {
-      margin: 0 auto;
-    }
+      img {
+        width: 100%;
+        height: 220px;
+        object-fit: cover;
+      }
 
-    button {
-      padding: 10px;
-      border-radius: 10px;
-      border: none;
-      cursor: pointer;
-      font-size: 14px;
-      transition: 0.3s ease;
-    }
+      h3 {
+        font-size: 18px;
+        margin: 15px;
+        font-weight: 600;
+      }
+      .description {
+        font-size: 14px;
+        color: #666;
+        margin: 0 15px 15px 15px;
+      }
 
-    button:first-of-type {
-      background: #111;
-      color: white;
-    }
+      .bottom {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        gap: 10px;
 
-    button:first-of-type:hover {
-      background: #333;
-    }
+        .price {
+          font-size: 18px;
+          color: #7c3aed;
+          font-weight: bold;
+        }
 
-    button:last-of-type {
-      background: #f1f1f1;
-      color: black;
-    }
+        .btnQtydiv {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          gap: 10px;
 
-    button:last-of-type:hover {
-      background: #ddd;
+          .btn {
+            padding: 8px 10px;
+            border-radius: 15px;
+            border: none;
+            cursor: pointer;
+            font-size: 14px;
+            transition: 0.3s ease;
+          }
+
+          .decreasebtn {
+            background-color: #111;
+            color: white;
+
+            &:hover {
+              background-color: #333;
+            }
+          }
+
+          .increasebtn {
+            background-color: #f1f1f1;
+            color: black;
+
+            &:hover {
+              background-color: #ddd;
+            }
+          }
+        }
+
+        .removebtn {
+          max-width: 130px;
+          width: 100%;
+          padding: 8px 20px;
+          border: none;
+          border-radius: 30px;
+          font-weight: 500;
+          cursor: pointer;
+          transition: 0.3s ease;
+
+          &:hover {
+            background-color: #ddd;
+            transform: translateY(-2px);
+          }
+        }
+      }
     }
   }
 }
@@ -104,8 +121,13 @@
   margin: 60px 0;
 
   p {
-    margin-top: 10px;
+    max-width: 200px;
+    width: 100%;
+    padding: 8px 20px;
     color: #555;
+    border-radius: 30px;
+    background-color: #ddd;
+    margin: 10px auto;
   }
 }
 

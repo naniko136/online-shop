@@ -9,7 +9,7 @@
       <div class="product-card">
         <img [src]="item.thumbnail" [alt]="item" />
 
-        <h3>{{ item.title }}</h3>
+        <h3>{{ item.title | titlecase }}</h3>
         <p class="description">
           {{ item.description }}
         </p>
@@ -17,20 +17,19 @@
         <div class="bottom">
           <span class="price">${{ item.price }}</span>
           <div class="btnQtydiv">
+            <button class="btn decreasebtn" (click)="decrease(item.id)">-</button>
             <p>
-              <button (click)="decrease(item.id)">-</button>
               {{ item.quantity }}
-              <button (click)="increase(item.id)">+</button>
             </p>
+            <button class="btn increasebtn" (click)="increase(item.id)">+</button>
           </div>
           <p class="price">sum: {{ item.price * item.quantity }}</p>
-          <button (click)="apiService.removeFromCart(item.id)">remove cart</button>
+          <button class="removebtn" (click)="apiService.removeFromCart(item.id)">
+            remove cart
+          </button>
         </div>
       </div>
     </div>
   }
   <!-- <button (click)="apiService.clearCart()">Clear Cart</button> -->
 </div>
-<p>aaa</p>
-
-<!-- test -->
